@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Alexandria:wght@200;300;400;600&display=swap");
+:root {
+  --bg-dark: #435062;
+  --bg-light: #f2f1f0;
+  --btn-body: blue;
+  --btn-hover: darkblue;
+  --shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  --cl-font-dark: rgb(31, 31, 31);
+  --cl-font-light: rgb(206, 196, 196);
+  --font: "Alexandria", sans-serif;
+  --font-extra-light: 200;
+  --font-light: 300;
+  --font-regular: 400;
+  --font-bold: 600;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  box-sizing: border-box;
+  font-family: var(--font);
+  font-family: var(--font-regular);
+}
