@@ -3,6 +3,7 @@
   --bg-dark: #435062;
   --bg-light: #f2f1f0;
   --btn-body: rgb(18, 18, 54);
+  --btn-body-danger: rgb(106, 19, 25);
   --btn-hover: rgb(115, 115, 165);
   --white: #ffffff;
   --black: #000000;
@@ -61,4 +62,17 @@ body {
 
 .btn:active {
   opacity: 0.5;
+}
+
+.btn--danger {
+  background: var(--btn-body-danger);
+  border: 1px solid var(--btn-body-danger);
+  color: var(--white);
+}
+
+.btn--danger:hover,
+.btn--danger:active {
+  background-color: initial;
+  background-position: 0 0;
+  color: var(--btn-body-danger);
 }

@@ -9,7 +9,7 @@ export default function App() {
     <Routes>
       <Route path="/" element={<Tasks />} />
       <Route path="login" element={<LogIn />} />
-      <Route path="signin" element={<SignUp />} />
+      <Route path="signup" element={<SignUp />} />
       <Route path="*" element={<NoPage />} />
     </Routes>
   );

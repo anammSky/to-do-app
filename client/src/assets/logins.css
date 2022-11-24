@@ -1,0 +1,58 @@
+@import url("../styles.css");
+
+.login__main {
+  background-color: var(--bg-dark);
+}
+
+.login__container {
+  padding: 4% 9% 7%;
+  background-color: var(--bg-light);
+  border-radius: 10px;
+}
+
+.is--center-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.login__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login__title {
+  margin: 0;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: var(--font-bold);
+  font-size: 4rem;
+}
+
+.login__section {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+.login__label {
+  text-transform: lowercase;
+  margin-bottom: 0.3em;
+  font-weight: var(--font-light);
+}
+input[type="text"].login__input,
+input[type="password"].login__input,
+input[type="email"].login__input {
+  border: solid 1px var(--bg-dark);
+  border-radius: 5px;
+  padding: 12px;
+}
+
+.login__section__btn {
+  display: flex;
+  justify-content: space-between;
+}
+/* .login__btn {
+} */
