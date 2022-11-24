@@ -72,7 +72,8 @@ router.patch(
 );
 
 router.delete("/task/:taskId", validateTaskId, async (req, resp) => {
-    const result = await Task.destroy({ where: { id: req.task.id } });
+    await Task.destroy({ where: { id: req.task.id } });
+    resp.json({ message: "Successfully deleted task" });
 });
 
 module.exports = router;
