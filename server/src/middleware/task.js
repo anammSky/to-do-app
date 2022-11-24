@@ -1,7 +1,7 @@
 const { Task } = require("../db/models");
 
-function validateTaskId(req, resp, next) {
-    req.task = Task.findByPk(req.taskId);
+async function validateTaskId(req, resp, next) {
+    req.task = await Task.findByPk(req.params.taskId);
     if (req.task === null) {
         resp.status(404).json({ message: "Task Not Found" });
         return;
