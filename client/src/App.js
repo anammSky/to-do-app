@@ -1,15 +1,16 @@
-import Main from "./components/Main";
-import Header from "./components/Header";
-import Boards from "./components/Boards";
-import Footer from "./components/Footer";
+import { Route, Routes } from "react-router-dom";
+import LogIn from "./pages/LogIn";
+import SignUp from "./pages/SignUp";
+import NoPage from "./pages/NoPage";
+import Tasks from "./pages/Tasks";
 
 export default function App() {
   return (
-    <>
-      <Header />
-      <Boards />
-      <Main />
-      <Footer />
-    </>
+    <Routes>
+      <Route path="/" element={<Tasks />} />
+      <Route path="login" element={<LogIn />} />
+      <Route path="signin" element={<SignUp />} />
+      <Route path="*" element={<NoPage />} />
+    </Routes>
   );
 }
