@@ -19,10 +19,6 @@ Task.init(
     finishBy: {
       type: DataTypes.STRING,
     },
-    authorID: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
   },
   {
     sequelize: db,
