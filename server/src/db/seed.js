@@ -8,22 +8,27 @@ async function seedTask() {
             title: "Shopping List",
             content: "Sainsbury's weekly shopping list.",
             finishBy: "2022-11-31 16:30",
+            UserId: 1,
         },
         {
             title: "House Work",
+            UserId: 2,
         },
         {
             title: "Christmas Shopping",
             content: "All gifts that need buying for christmas.",
+            UserId: 2,
         },
         {
             title: "Work Project",
             finishBy: "2022-12-14 09:30",
+            UserId: 1,
         },
         {
             title: "Holiday Planner",
             content: "Everything needed before our holiday",
             finishBy: "2023-08-03 04:15",
+            UserId: 1,
         },
     ]);
 }
@@ -52,5 +57,7 @@ async function seed() {
     await seedUser();
     await seedTask();
 }
+
+seed()
 
 module.exports = seed;
