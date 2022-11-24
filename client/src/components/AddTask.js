@@ -1,6 +1,28 @@
 import React from "react";
+import { useState } from "react";
 
 export default function AddTask(props) {
+  const [formData, setFormData] = useState({
+    title: "",
+    content: "",
+    tags: "",
+  });
+  // do something about passwords
+  function handleChange(event) {
+    const { name, value } = event.target;
+    setFormData((prevFormData) => {
+      return {
+        ...prevFormData,
+        [name]: value,
+      };
+    });
+  }
+  function handleSubmit(event) {
+    event.preventDefault();
+    console.log(formData);
+    // function to api login
+    props.handleClick();
+  }
   return (
     <section className="add-task__container">
       <form className="add-task__form">
@@ -10,30 +32,36 @@ export default function AddTask(props) {
         <input
           className="add-task__input"
           type="text"
-          id="New Task"
-          name="New Task"
+          id="title"
+          name="title"
+          value={formData.title}
+          onChange={handleChange}
         ></input>
-        <label className="add-task__label" htmlFor="password">
+        <label className="add-task__label" htmlFor="content">
           To-Do:
         </label>
         <textarea
           className="add-task__input"
           // type="textarea "
-          id="To-Do"
-          name="To-Do"
-        ></textarea>
+          id="content"
+          name="content"
+          value={formData.content}
+          onChange={handleChange}
+        />
         <label className="add-task__label" htmlFor="password">
           Tags:
         </label>
         <input
           className="add-task__input"
           type="text"
-          id="Tags"
-          name="Tags"
+          id="tags"
+          name="tags"
+          value={formData.tags}
+          onChange={handleChange}
         ></input>
         <section className="add-task__section__btn">
           <button
-            onClick={props.handleClick}
+            onClick={handleSubmit}
             className="btn add-task__btn"
             id="btnAdd-task"
           >
