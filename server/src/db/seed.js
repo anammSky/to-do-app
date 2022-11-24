@@ -16,7 +16,8 @@ async function seedTask() {
         },
         {
             title: "Christmas Shopping",
-            content: "All gifts that need buying for christmas.",
+            content:
+                "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo illo nam impedit, amet tempore delectus consequuntur temporibus ratione consectetur accusamus corporis culpa illum inventore quasi reprehenderit aspernatur minima reiciendis sit. Ea praesentium ut adipisci, recusandae incidunt molestiae ullam? Quam facilis totam alias ullam expedita quos accusantium omnis ipsum, modi libero.",
             UserId: 2,
         },
         {

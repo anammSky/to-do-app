@@ -14,7 +14,7 @@ Task.init(
         },
         isComplete: {
             type: DataTypes.BOOLEAN,
-            defultValue: false,
+            defaultValue: false,
         },
         finishBy: {
             type: DataTypes.STRING,
