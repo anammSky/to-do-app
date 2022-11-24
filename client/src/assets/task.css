@@ -23,13 +23,19 @@
   transform: scale(1.7);
 }
 
+.task__section__btns {
+  display: inline;
+}
 .task__btn {
   justify-self: center;
   align-self: center;
   background-color: transparent;
   border-width: 0;
-  width: 35px;
-  height: 35px;
+  padding: 2%;
+}
+.task__btn__img {
+  width: 25px;
+  height: 25px;
 }
 .task__title {
   margin: 0;
