@@ -1,7 +1,9 @@
+import React from "react";
+import "../assets/footer.css"
 export default function Footer() {
     return(
-        <div>
-            <h1>Created by Ana, Arron, Scott and Omar!</h1>
-        </div>
+        <footer className="footer">
+            <p>Created by Ana, Arron, Scott and Omar!</p>
+        </footer>
     )
 }
