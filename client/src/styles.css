@@ -2,9 +2,13 @@
 :root {
   --bg-dark: #435062;
   --bg-light: #f2f1f0;
-  --btn-body: blue;
-  --btn-hover: darkblue;
+  --btn-body: rgb(18, 18, 54);
+  --btn-hover: rgb(115, 115, 165);
+  --white: #ffffff;
+  --black: #000000;
+
   --shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  --btn-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
   --cl-font-dark: rgb(31, 31, 31);
   --cl-font-light: rgb(206, 196, 196);
   --font: "Alexandria", sans-serif;
@@ -21,5 +25,40 @@ body {
   font-size: 100%;
   box-sizing: border-box;
   font-family: var(--font);
-  font-family: var(--font-regular);
+  font-weight: var(--font-regular);
+}
+
+.btn {
+  background: var(--btn-body);
+  border: 1px solid var(--btn-body);
+  border-radius: 6px;
+  box-shadow: var(--btn-shadow);
+  box-sizing: border-box;
+  color: var(--white);
+  cursor: pointer;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: var(--font-bold);
+  line-height: 16px;
+  min-height: 40px;
+  outline: 0;
+  padding: 12px 14px;
+  text-align: center;
+  text-rendering: geometricprecision;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+}
+
+.btn:hover,
+.btn:active {
+  background-color: initial;
+  background-position: 0 0;
+  color: var(--btn-body);
+}
+
+.btn:active {
+  opacity: 0.5;
 }
