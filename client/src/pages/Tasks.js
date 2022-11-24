@@ -8,7 +8,7 @@ export default function Tasks() {
     <>
       <Header />
       <Boards />
-      <Main columns={2} gap={25} />
+      <Main />
       <Footer />
     </>
   );
