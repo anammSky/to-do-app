@@ -1,42 +1,8 @@
-const { User, Task } = require("./models/index");
+const { User, Task, Tag } = require("./models/index");
 const db = require("./db");
 
-async function seedTask() {
-    // Creating Tasks
-    await Task.bulkCreate([
-        {
-            title: "Shopping List",
-            content: "Sainsbury's weekly shopping list.",
-            finishBy: "2022-11-31 16:30",
-            UserId: 1,
-        },
-        {
-            title: "House Work",
-            UserId: 2,
-        },
-        {
-            title: "Christmas Shopping",
-            content:
-                "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo illo nam impedit, amet tempore delectus consequuntur temporibus ratione consectetur accusamus corporis culpa illum inventore quasi reprehenderit aspernatur minima reiciendis sit. Ea praesentium ut adipisci, recusandae incidunt molestiae ullam? Quam facilis totam alias ullam expedita quos accusantium omnis ipsum, modi libero.",
-            UserId: 2,
-        },
-        {
-            title: "Work Project",
-            finishBy: "2022-12-14 09:30",
-            UserId: 1,
-        },
-        {
-            title: "Holiday Planner",
-            content: "Everything needed before our holiday",
-            finishBy: "2023-08-03 04:15",
-            UserId: 1,
-        },
-    ]);
-}
-
-async function seedUser() {
-    //Creating Users
-    User.bulkCreate([
+async function seedUsers() {
+    return await User.bulkCreate([
         {
             name: "Julie",
             password: "jB3an_1997",
@@ -47,6 +13,50 @@ async function seedUser() {
             password: "060593Olij",
             email: "ollieball1337@gmail.com",
         },
+        {
+            name: "Alex",
+            password: "4lex!sCoOl",
+            email: "alexwinter26@gmail.com",
+        },
+    ]);
+}
+
+async function seedTasks() {
+    return await Task.bulkCreate([
+        {
+            title: "Shopping List",
+            content: "Sainsbury's weekly shopping list.",
+            finishBy: "2022-11-31 16:30",
+        },
+        {
+            title: "House Work",
+        },
+        {
+            title: "Christmas Shopping",
+            content:
+                "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo illo nam impedit, amet tempore delectus consequuntur temporibus ratione consectetur accusamus corporis culpa illum inventore quasi reprehenderit aspernatur minima reiciendis sit. Ea praesentium ut adipisci, recusandae incidunt molestiae ullam? Quam facilis totam alias ullam expedita quos accusantium omnis ipsum, modi libero.",
+        },
+        {
+            title: "Work Project",
+            finishBy: "2022-12-14 09:30",
+        },
+    ]);
+}
+
+async function seedTags() {
+    return await Tag.bulkCreate([
+        {
+            name: "Shopping",
+        },
+        {
+            name: "Holiday",
+        },
+        {
+            name: "Work",
+        },
+        {
+            name: "House",
+        },
     ]);
 }
 
@@ -55,8 +65,26 @@ async function seed() {
         force: true,
     });
 
-    await seedUser();
-    await seedTask();
+    // Bulk create users
+    const users = await seedUsers();
+
+    // Bulk create tasks
+    const tasks = await seedTasks();
+
+    // Assigning tasks to users
+    users[0].addTask(tasks[0]);
+    users[0].addTask(tasks[1]);
+    users[1].addTask(tasks[2]);
+    users[0].addTask(tasks[3]);
+
+    // Bulk create tags
+    const tags = await seedTags();
+
+    // Assigning tags to tasks
+    tasks[0].addTag(tags[0]);
+    tasks[0].addTag(tags[1]);
+    tasks[3].addTag(tags[2]);
+    tasks[2].addTag(tags[1]);
 }
 
 module.exports = seed;
