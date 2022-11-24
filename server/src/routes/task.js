@@ -38,7 +38,7 @@ router.patch(
         if (value === undefined) return true; // doesn't technically have to be passed
         if (typeof value !== "string") throw new Error("New title must be a string");
         if (value.length === 0) throw new Error("New title cannot be empty");
-        if (value.length > 20) throw new Error("New title cannot be more than 20");
+        if (value.length > 20) throw new Error("New title cannot be more than 20 characters");
         return true; // title is valid
     }),
     body("content").custom(value => {
@@ -54,8 +54,9 @@ router.patch(
     body("finishBy").custom(value => {
         const invalidFinishMsg = "New finish-by date must be in format YYYY-mm-dd HH:MM";
         if (value === undefined) return true; // doesn't technically have to be passed
-        if (value.length !== 16) throw new Error(errMsg);
-        if (!/d{4}-d{2}-d{2} d{2}:d{2}/.test(value.toString())) throw new Error(invalidFinishMsg);
+        if (typeof value !== "string") throw new Error("New finish-by must be a string");
+        if (value.length !== 16) throw new Error(invalidFinishMsg);
+        if (!/\d{4}-\d{2}-\d{2} \d{2}:\d{2}/.test(value)) throw new Error(invalidFinishMsg);
         return true;
     }),
     async (req, resp) => {
@@ -64,14 +65,13 @@ router.patch(
             return resp.status(400).json({ errors: errors.array() });
         }
         const toUpdate = {};
-        if (req.get("title") !== undefined) toUpdate["title"] = req.get("title");
-        if (req.get("content") !== undefined) toUpdate["content"] = req.get("content");
-        if (req.get("isComplete") !== undefined) toUpdate["isComplete"] = req.get("isComplete");
-        if (req.get("finishBy") !== undefined) toUpdate["finishBy"] = req.get("finishBy");
-        resp.json({
-            message: "Successfully updated task",
-            result: await req.task.update(toUpdate),
-        });
+        if (req.body.title !== undefined) toUpdate["title"] = req.body.title;
+        if (req.body.content !== undefined) toUpdate["content"] = req.body.content;
+        if (req.body.isComplete !== undefined) toUpdate["isComplete"] = req.body.isComplete;
+        if (req.body.finishBy !== undefined) toUpdate["finishBy"] = req.body.finishBy;
+
+        await Task.update(toUpdate, { where: { id: req.task.id } });
+        resp.json({ message: "Successfully updated task" });
     }
 );
 
