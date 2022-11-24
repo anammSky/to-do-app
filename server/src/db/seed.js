@@ -47,16 +47,16 @@ async function seedTasks() {
 async function seedTags() {
     return await Tag.bulkCreate([
         {
-            name: "Shopping",
+            title: "Shopping",
         },
         {
-            name: "Holiday",
+            title: "Holiday",
         },
         {
-            name: "Work",
+            title: "Work",
         },
         {
-            name: "House",
+            title: "House",
         },
     ]);
 }
