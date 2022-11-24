@@ -9,16 +9,22 @@ const router = express.Router();
 
 router.post(
     "/signup",
-    body("name").isString(),
+    body("name").custom(value => {
+        if (typeof value !== "string") throw new Error("name must be a string");
+        if (value.length === 0) throw new Error("name cannot be empty");
+        return true; // name is valid
+    }),
     body("email")
         .isEmail()
         .custom(async value => {
-            if ((await User.findOne({ email: value })) !== null) {
+            if (typeof value !== "string") throw new Error("email must be a string");
+            if ((await User.findOne({ where: { email: value } })) !== null)
                 throw new Error("email must be unique");
-            }
-            return true;
+            return true; // email is valid
         }),
     body("password").custom(value => {
+        if (typeof value !== "string") throw new Error("password must be a string");
+
         let numCount = 0;
         let lowerCount = 0;
         let upperCount = 0;
@@ -42,7 +48,6 @@ router.post(
         if (value.length < 5 || value.length > 40) {
             throw new Error("password must be 5-40 chars (inclusive)");
         }
-
         if (numCount === 0) {
             throw new Error("password must contain at least one number");
         }
