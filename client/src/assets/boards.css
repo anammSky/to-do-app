@@ -13,14 +13,20 @@
 .board__name {
   font-weight: var(--font-light);
   margin: 0;
-  margin-right: 5%;
+  margin-right: 15px;
   white-space: nowrap;
 }
 
 .board__name:last-child {
   margin-right: 0;
 }
+/* .board__name__input {
+} */
 .board__btn {
-  margin-left: 10%;
+  margin-left: 10px;
   align-self: center;
+}
+
+.board__btn__container {
+  display: flex;
 }
