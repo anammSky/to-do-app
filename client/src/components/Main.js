@@ -64,8 +64,11 @@ const Main = (props) => {
   }
 
   return (
-    <main className="tasks__main" style={{ display: "flex" }}>
-      {result}
+    <main className="tasks__main">
+      <div className="task__bntAdd__container">
+        <button className="btn">Add Task</button>
+      </div>
+      <div style={{ display: "flex" }}>{result}</div>
     </main>
   );
 };

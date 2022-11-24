@@ -1,6 +1,13 @@
 @import url("../styles.css");
 .tasks__main {
   margin: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.task__bntAdd__container {
+  margin: 0 auto;
+  margin-bottom: 20px;
 }
 .task {
   border-radius: 10px;
