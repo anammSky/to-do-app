@@ -58,6 +58,4 @@ async function seed() {
     await seedTask();
 }
 
-seed()
-
 module.exports = seed;
