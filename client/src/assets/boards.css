@@ -1,0 +1,26 @@
+@import url("../styles.css");
+
+.board {
+  display: flex;
+  background-color: var(--bg-dark);
+  justify-content: center;
+}
+
+.board__name__container {
+  display: flex;
+  padding: 1rem;
+}
+.board__name {
+  font-weight: var(--font-light);
+  margin: 0;
+  margin-right: 5%;
+  white-space: nowrap;
+}
+
+.board__name:last-child {
+  margin-right: 0;
+}
+.board__btn {
+  margin-left: 10%;
+  align-self: center;
+}
