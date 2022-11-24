@@ -13,9 +13,9 @@ router.get("/tasks", async (_, resp) => {
 });
 
 router.delete("/tasks", async (_, resp) => {
+    await Task.destroy({ where: {} });
     resp.json({
         message: "Successfully deleted all tasks",
-        result: await Task.destroy({ where: {} }),
     });
 });
 
