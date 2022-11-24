@@ -39,7 +39,10 @@ router.post(
 router.get("/tag/:tagId", validateTagId, async (req, resp) => {
     resp.json({
         message: "Successfully fetched tasks with the specified tag",
-        result: await req.tag.getTasks(),
+        result: {
+            title: req.tag.title,
+            tasks: await req.tag.getTasks(),
+        },
     });
 });
 
