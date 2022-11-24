@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import Task from "./Task";
 import { useState, useEffect } from "react";
 import fetchGetAllTasks from "./utils/fetGetAllTasks";
+import AddTask from "./AddTask";
 
 const Main = (props) => {
   const [taskInfo, setTaskInfo] = useState({
@@ -20,7 +21,6 @@ const Main = (props) => {
     return () => (mounted = false);
   }, []);
 
-  console.log(taskInfo);
   const columnWrapper = {};
   const result = [];
   // create columns
@@ -51,11 +51,21 @@ const Main = (props) => {
     );
   }
 
+  const [isShown, setIsShown] = useState(false);
+  function toggleShown() {
+    setIsShown((prevShown) => !prevShown);
+  }
+
   return (
     <main className="tasks__main">
-      <div className="task__bntAdd__container">
-        <button className="btn">Add Task</button>
-      </div>
+      <section className="task__bntAdd__container">
+        {!isShown && (
+          <button className="btn" onClick={toggleShown}>
+            Add Task
+          </button>
+        )}
+      </section>
+      {isShown && <AddTask handleClick={toggleShown} />}
       <div style={{ display: "flex" }}>{result}</div>
     </main>
   );
