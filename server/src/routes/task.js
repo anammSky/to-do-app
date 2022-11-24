@@ -59,6 +59,10 @@ router.patch(
         return true;
     }),
     async (req, resp) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return resp.status(400).json({ errors: errors.array() });
+        }
         const toUpdate = {};
         if (req.get("title") !== undefined) toUpdate["title"] = req.get("title");
         if (req.get("content") !== undefined) toUpdate["content"] = req.get("content");
