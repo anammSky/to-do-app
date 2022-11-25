@@ -19,11 +19,6 @@ router.delete("/tasks", async (_, resp) => {
     });
 });
 
-router.post("/tasks", async (_, resp) => {
-    // Requires a login system so we can get the User
-    resp.status(500).json({ message: "Endpoint not ready yet" });
-});
-
 router.get("/task/:taskId", validateTaskId, async (req, resp) => {
     resp.json({
         message: "Successfully retrieved task",
