@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import Task from "./Task";
 import { useState, useEffect } from "react";
 import fetchGetAllTasksOfUser from "./utils/tasks/fetchGetAllTasksOfUser";
+import Cookies from "universal-cookie";
 
 const WaterfallLayout = (props) => {
   const [taskInfo, setTaskInfo] = useState({
@@ -12,8 +13,9 @@ const WaterfallLayout = (props) => {
 
   useEffect(() => {
     let mounted = true;
-
-    fetchGetAllTasks().then((data) => {
+    const cookies = new Cookies();
+    const userId = JSON.parse(atob(cookies.get("token").split(".")[1])).data.dataValues.id
+    fetchGetAllTasksOfUser(userId).then((data) => {
       if (mounted) {
         setTaskInfo(data.result);
       }

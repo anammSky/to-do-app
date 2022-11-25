@@ -1,4 +1,4 @@
-export default async function fetchPostOneTask(userId ,title, content, finishBy) {
+export default async function fetchPostOneTask(userId, title, content, finishBy) {
     try {
         const response = await fetch(`http://localhost:5001/user/${userId}/tasks`, {
         method: "POST",

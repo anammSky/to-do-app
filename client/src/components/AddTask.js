@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import fetchPatchOneTask from "./utils/tasks/fetchPatchOneTask";
+import Cookies from "universal-cookie";
 
 export default function AddTask(props) {
   const [formData, setFormData] = useState({
@@ -21,7 +22,9 @@ export default function AddTask(props) {
   function handleSubmit(event) {
     event.preventDefault();
     console.log(formData);
-    fetchPatchOneTask(formData.title, formData.content)
+    const cookies = new Cookies();
+    const userId = JSON.parse(atob(cookies.get("token").split(".")[1])).data.dataValues.id
+    fetchPatchOneTask(userId, formData.title, formData.content)
     props.handleClick();
   }
   return (
