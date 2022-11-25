@@ -3,7 +3,7 @@ import "../assets/task.css";
 import edit from "../assets/edit.svg";
 // import deleteSVG from "../assets/bin.svg";
 import deleteSVG from "../assets/delete.svg";
-
+import fetchDeleteOneTask from "./utils/tasks/fetchDeleteOneTask";
 export default function Task(props) {
   const id = props.id;
   const [isComplete, setIsComplete] = useState(false);
@@ -20,10 +20,11 @@ export default function Task(props) {
     console.log(id);
   }
 
-  function handleDelete(event) {
-    // call to api
-    console.log(id);
+  async function handleDelete(event) {
+    await fetchDeleteOneTask(id);
+    event.target.parentElement.parentElement.parentElement.remove();
   }
+
   return (
     <article className="task" style={{ marginBottom: `${props.margin}px` }}>
       <div className="task__section__title">
