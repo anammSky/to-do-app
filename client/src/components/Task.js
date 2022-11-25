@@ -69,7 +69,14 @@ export default function Task(props) {
                     value={isComplete}
                     onChange={handleCheck}
                 ></input>
-                {isEdit && <input value={taskEdit.title} name="title" onChange={handleChange} />}
+                {isEdit && (
+                    <input
+                        value={taskEdit.title}
+                        name="title"
+                        className="task__title--edit"
+                        onChange={handleChange}
+                    />
+                )}
                 {!isEdit && <h1 className="task__title">{taskEdit.title}</h1>}
             </div>
             <div className="task__section__content">
@@ -77,6 +84,7 @@ export default function Task(props) {
                     <textarea
                         value={taskEdit.content ? taskEdit.content : " "}
                         name="content"
+                        className="task__content--edit"
                         onChange={handleChange}
                     />
                 )}
