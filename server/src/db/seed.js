@@ -1,9 +1,14 @@
 const { User, Task, Tag } = require("./models/index");
 const db = require("./db");
-const bcrypt = require('bcrypt')
+const bcrypt = require("bcrypt");
 
 async function seedUsers() {
     return await User.bulkCreate([
+        {
+            name: "Admin",
+            password: await bcrypt.hash("admin", await bcrypt.genSalt(10)),
+            email: "admin@admin.com",
+        },
         {
             name: "Julie",
             password: await bcrypt.hash("jB3an_1997", await bcrypt.genSalt(10)),
@@ -88,6 +93,6 @@ async function seed() {
     tasks[2].addTag(tags[1]);
 }
 
-seed()
+seed();
 
 module.exports = seed;
