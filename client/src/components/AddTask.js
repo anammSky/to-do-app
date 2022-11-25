@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import fetchPatchOneTask from "./utils/tasks/fetchPatchOneTask";
 
 export default function AddTask(props) {
   const [formData, setFormData] = useState({
@@ -20,7 +21,7 @@ export default function AddTask(props) {
   function handleSubmit(event) {
     event.preventDefault();
     console.log(formData);
-    // function to api login
+    fetchPatchOneTask(formData.title, formData.content)
     props.handleClick();
   }
   return (

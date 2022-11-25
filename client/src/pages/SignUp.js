@@ -1,6 +1,6 @@
 import "../assets/logins.css";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import Cookies from "universal-cookie";
 
 const cookies = new Cookies();
@@ -14,6 +14,7 @@ export default function SignUp() {
     });
 
     const [errorMsg, setErrorMsg] = useState("");
+    const [signedUp, setSignedUp] = useState(cookies.get("token") !== undefined);
 
     function handleChange(event) {
         const { name, value } = event.target;
@@ -42,7 +43,11 @@ export default function SignUp() {
         const json = await resp.json();
         if (resp.status === 201) {
             // Account was successfully created
-            cookies.set("token", json.token, { path: "/" });
+            setErrorMsg("");
+            const token = json.token;
+            cookies.set("token", token, { path: "/" });
+            cookies.set("name", JSON.parse(atob(token.split(".")[1])).data.name);
+            setSignedUp(true);
         } else {
             let newError;
             if (json.errors) {
@@ -53,7 +58,9 @@ export default function SignUp() {
             setErrorMsg(newError);
         }
     }
-    return (
+    return signedUp ? (
+        <Navigate to="/" />
+    ) : (
         <main className="login__main is--center-screen">
             <div className="login__container">
                 <form className="login__form" onSubmit={handleSubmit}>
@@ -113,9 +120,6 @@ export default function SignUp() {
                     </section>
                     <section className="login__section__btn">
                         <button type="submit" className="btn login__btn">
-                            {/* <Link to="/">Sign Up</Link>
-              Sign up and log in validation
-            */}
                             Sign Up
                         </button>
                         <button type="button" className="btn btn--danger login__btn">
