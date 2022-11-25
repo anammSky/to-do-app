@@ -3,6 +3,7 @@
   margin: 20px;
   display: flex;
   flex-direction: column;
+  height: 100vh;
 }
 
 .task__bntAdd__container {
@@ -10,9 +11,14 @@
   margin-bottom: 20px;
 }
 .task {
-  border-radius: 10px;
+  border-radius: 20px;
   padding: 20px;
-  border-style: groove;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5);
+  transition: transform 0.45s ease, background 0.45s ease;
+}
+.task:hover {
+  background: var(--bg-primary-light-faded);
+  transform: scale(1.02);
 }
 
 .task__section__title {
@@ -26,13 +32,7 @@
 .task__section__btns {
   display: inline;
 }
-.task__btn {
-  justify-self: center;
-  align-self: center;
-  background-color: transparent;
-  border-width: 0;
-  padding: 2%;
-}
+
 .task__btn__img {
   width: 25px;
   height: 25px;
@@ -45,7 +45,7 @@
 }
 
 .add-task__container {
-  background-color: var(--bg-dark);
+  background-color: var(--bg-primary-light);
   padding: 2% 3%;
   margin-bottom: 20px;
   border-radius: 10px;

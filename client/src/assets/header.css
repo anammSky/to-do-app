@@ -1,8 +1,8 @@
 @import url("../styles.css");
 
 .header {
-  padding: 10px;
-  background-color: var(--bg-light);
+  padding: 40px 0 20px;
+  background-color: var(--bg-primary-light);
   display: flex;
   justify-content: space-between;
 }
@@ -13,7 +13,7 @@
   margin-right: 30px;
 }
 .header__logout {
-  margin-left: 10px;
+  margin-left: 20px;
 }
 .header__title {
   margin: 10px 0 0 20px;
@@ -21,4 +21,5 @@
 .header__username {
   justify-self: center;
   margin: 0;
+  font-size: 1.2rem;
 }

@@ -2,7 +2,7 @@
 
 .board {
   display: flex;
-  background-color: var(--bg-dark);
+  background-color: var(--bg-primary);
   justify-content: center;
 }
 
