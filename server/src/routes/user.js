@@ -64,7 +64,7 @@ router.post(
         const task = await Task.create({
             title: req.body.title,
             content: req.body.content || null,
-            isComplete: req.body.isComplete || null,
+            isComplete: req.body.isComplete || false,
             finishBy: req.body.finishBy || null,
         });
         await req.user.addTask(task);
