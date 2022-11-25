@@ -2,13 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 import Task from "./Task";
 import { useState, useEffect } from "react";
-import fetchGetAllTasks from "./utils/fetGetAllTasks";
+import fetchGetAllTasks from "./utils/fetchGetAllTasks";
 
 const WaterfallLayout = (props) => {
   const [taskInfo, setTaskInfo] = useState({
     title: "This is your first Task",
     content: "What would you like to do?",
   });
+
   useEffect(() => {
     let mounted = true;
 
