@@ -7,6 +7,15 @@ export default async function fetchPostOneTag(tagTitle) {
                 title: tagTitle,
             },
         });
+        // if (response.status === 201) {
+        //     return data;
+        // } else {
+        //     if (data.errors !== undefined) {
+        //         alert(data.errors[0].msg);
+        //         return;
+        //     }
+        //     alert(data.message);
+        // }
     } catch (error) {
         alert(error.message);
     }

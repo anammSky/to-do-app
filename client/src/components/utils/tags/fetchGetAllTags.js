@@ -2,8 +2,16 @@ export default async function fetchGetAllTags() {
     try {
         const response = await fetch(`http://localhost:5001/tags`);
         const data = await response.json();
-        return data;
-      } catch (error) {
+        if (response.status === 200) {
+            return data;
+        } else {
+            if (data.errors !== undefined) {
+                alert(data.errors[0].msg);
+                return;
+            }
+            alert(data.message);
+        }
+    } catch (error) {
         alert(error.message);
-      }
+    }
 }
