@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Task from "./Task";
 import { useState, useEffect } from "react";
-import fetchGetAllTasks from "./utils/tasks/fetchGetAllTasks";
+import fetchGetAllTasksOfUser from "./utils/tasks/fetchGetAllTasksOfUser";
 
 const WaterfallLayout = (props) => {
   const [taskInfo, setTaskInfo] = useState({
