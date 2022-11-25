@@ -25,18 +25,31 @@ export default function Task(props) {
             };
         });
     }
-    function handleCheck(event) {
-        const { checked } = event.target;
-        // is this right???
-        setIsComplete(checked);
-        // function to api
-        // add style to grey out task and out strokethrough
+    // function handleCheck(event) {
+    //     const { checked } = event.target;
+    //     // is this right???
+    //     setIsComplete(checked);
+    //     // function to api
+    //     // add style to grey out task and out strokethrough
+    // }
+    
+    async function handleCheck(event){
+        const cb = event.target;
+        if(cb.checked)
+        {
+            fetchPatchOneTask(id, undefined, undefined, true)
+            cb.parentElement.parentElement.classList.add("checked")
+        }
+        else{
+            fetchPatchOneTask(id, undefined, undefined, false)
+            cb.parentElement.parentElement.classList.remove("checked")
+        }
     }
 
     async function handleEdit(event) {
         setIsEdit(!isEdit);
         // call to api
-        const editOrSaveBtn = document.getElementsByClassName("editbtnimg")[0];
+        const editOrSaveBtn = event.target;
         if (editOrSaveBtn.id === "edit") {
             editOrSaveBtn.src = save;
             editOrSaveBtn.alt = "save";
