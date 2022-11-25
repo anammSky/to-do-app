@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import Task from "./Task";
 import { useState, useEffect } from "react";
 import fetchGetAllTasks from "./utils/fetGetAllTasks";
-import AddTask from "./AddTask";
 
 const WaterfallLayout = (props) => {
   const [taskInfo, setTaskInfo] = useState({
@@ -30,10 +29,16 @@ const WaterfallLayout = (props) => {
   // divide children into columns
   for (let i = 0; i < taskInfo.length; i++) {
     const columnIndex = i % props.columns;
-    const { title, content } = taskInfo[i];
+    const { id, title, content } = taskInfo[i];
 
     columnWrapper[`column${columnIndex}`].push(
-      <Task key={i} margin={props.gap} title={title} content={content} />
+      <Task
+        key={i}
+        id={id}
+        margin={props.gap}
+        title={title}
+        content={content}
+      />
     );
   }
   // wrap children in each column with a div
