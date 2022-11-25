@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export default function SignUp() {
   const [formData, setFormData] = useState({
-    username: "",
+    name: "",
     password: "",
     email: "",
     repeatPassword: "",
@@ -33,15 +33,15 @@ export default function SignUp() {
         <form className="login__form" onSubmit={handleSubmit}>
           <h1 className="login__title">Sign Up</h1>
           <section className="login__section">
-            <label className="login__label" htmlFor="username">
-              Username
+            <label className="login__label" htmlFor="name">
+              Name
             </label>
             <input
               className="login__input"
               type="text"
-              id="username"
-              name="username"
-              value={formData.username}
+              id="name"
+              name="name"
+              value={formData.name}
               onChange={handleChange}
             ></input>
           </section>

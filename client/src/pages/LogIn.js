@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export default function LogIn() {
   const [formData, setFormData] = useState({
-    username: "",
+    email: "",
     password: "",
   });
   // do something about passwords
@@ -28,15 +28,15 @@ export default function LogIn() {
         <form onSubmit={handleSubmit} className="login__form">
           <h1 className="login__title">Log In</h1>
           <section className="login__section">
-            <label className="login__label" htmlFor="username">
-              Username
+            <label className="login__label" htmlFor="email">
+              email
             </label>
             <input
               className="login__input"
-              type="text"
-              id="username"
-              name="username"
-              value={formData.username}
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
               onChange={handleChange}
             ></input>
           </section>
